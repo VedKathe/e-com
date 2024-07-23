@@ -25,7 +25,7 @@ export class AuthService {
 
   validateToken(token:string)
   {
-    
+
     const url = 'http://localhost:3000/auth/status';
     const headers = { 'Authorization': `Bearer ${token}` }
     return this.http.get(url,{ headers }).pipe(
@@ -35,5 +35,23 @@ export class AuthService {
       })
     );
     
+  }
+
+  isLoggedIn(){
+
+    if( typeof(localStorage) !== "undefined")
+      {
+        return localStorage.getItem("token") != null;
+      }
+      else{
+        return false;
+      
+      }
+    }
+    
+
+  logout(){
+    localStorage.removeItem("token")
+    localStorage.removeItem("user")
   }
 }

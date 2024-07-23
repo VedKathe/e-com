@@ -8,7 +8,7 @@ export class LocalService {
   constructor() { }
 
   public saveData(key: string, value: string) {
-    
+
     localStorage.setItem(key, JSON.stringify(value));
   }
 
@@ -22,5 +22,20 @@ export class LocalService {
 
   public clearData() {
     localStorage.clear();
+  }
+
+  public getUserName() {
+    const user = JSON.parse(localStorage.getItem("user")!)
+    return user.username
+  }
+
+  public getRole() {
+    const user = JSON.parse(localStorage.getItem("user")!)
+    return user.role
+  }
+
+  public getUserId() {
+    const user = JSON.parse(localStorage.getItem("user")!)
+    return user.id
   }
 }

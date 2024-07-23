@@ -2,6 +2,7 @@ import { Component ,OnInit} from '@angular/core';
 import { FormControl, FormGroup ,ReactiveFormsModule,FormBuilder} from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { LocalService } from '../../services/local/local.service';
+import { Router } from '@angular/router';
 
 interface Config {
   token: string;
@@ -22,7 +23,7 @@ export class LoginPageComponent {
 
   myForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authservice: AuthService, private localStore: LocalService) {
+  constructor(private fb: FormBuilder, private authservice: AuthService, private localStore: LocalService, private router:Router) {
     this.myForm = this.fb.group({
       email: '',
       password:''
@@ -35,22 +36,14 @@ export class LoginPageComponent {
   });
 
   onSubmit(form: FormGroup) {
-    console.log('Valid?', form.valid); // true or false
 
-    console.log('Email', form.value.email);
-    console.log('Password', form.value.password);
 
     this.authservice.getLogin(form.value.email,form.value.password).subscribe((res)=>
     {
-      
       this.localStore.saveData("token",res.token)
       this.localStore.saveData("user",res.user)
-
-      console.log(this.localStore.getData("user"));
+      this.router.navigate(["/"])
     })
-
-    this.authservice.validateToken("dhauknsjandj,sabdykbaksndkuad").subscribe((res)=>{
-      console.log(res);
-    })
+    
   }
 }

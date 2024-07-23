@@ -1,0 +1,235 @@
+<div class=" p-5 pt-3">
+    <div class="d-flex justify-content-between p-2 ">
+        <div class="h3">Products</div>
+        <div>
+            <button class="btn btn-primary" title="newPost"
+                data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="setNewProduct()">Create new Product</button>
+        </div>
+    </div>
+    <div class="rounded p-2 m-2 shadow-lg">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Product ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let product of products'>
+                    <th scope="row">{{product.productid}}</th>
+                    <td>{{product.name}}</td>
+                    <td>{{product.description}}</td>
+                    <td>{{product.category}}</td>
+                    <td>Rs. {{product.price}}</td>
+                    <td>{{product.stock}}</td>
+                    <td>
+                        <div class>
+                            <button class="btn btn-secondary" title="edit"
+                                data-bs-toggle="modal"
+                                data-bs-target="#editModal"
+                                (click)="setCurrentProduct(product)">Edit</button>
+                            <button class="btn btn-danger"
+                                title="delete">Delete</button>
+
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Create
+                    Product Listing</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <form #productForm="ngForm"
+                    (ngSubmit)="submitProductForm(productForm)">
+
+                    <div class="form-group">
+                        <label for="productid">Product ID</label>
+                        <input type="text" class="form-control" id="productid"
+                            name="productid"
+                            [(ngModel)]="productDetails.productid" required>
+                        <!-- <div *ngIf="productForm.controls.productid?.touched && productForm.controls.productid?.invalid" class="text-danger">
+                    Product ID is required.
+                  </div> -->
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name"
+                            name="name" [(ngModel)]="productDetails.name"
+                            required>
+                        <!-- <div *ngIf="productForm.controls.name?.touched && productForm.controls.name?.invalid" class="text-danger">
+                    Name is required.
+                  </div> -->
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" id="description"
+                            name="description"
+                            [(ngModel)]="productDetails.description"
+                            required></textarea>
+                        <!-- <div *ngIf="productForm.controls.description?.touched && productForm.controls.description?.invalid" class="text-danger">
+                    Description is required.
+                  </div> -->
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <input type="text" class="form-control" id="category"
+                            name="category"
+                            [(ngModel)]="productDetails.category" required>
+                        <!-- <div *ngIf="productForm.controls.category?.touched && productForm.controls.category?.invalid" class="text-danger">
+                    Category is required.
+                  </div> -->
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="number" class="form-control" id="price"
+                            name="price" [(ngModel)]="productDetails.price"
+                            required min="0">
+                        <!-- <div *ngIf="productForm.controls.price?.touched && productForm.controls.price?.invalid" class="text-danger">
+                    Please enter a valid price.
+                  </div> -->
+                    </div>
+
+                    <div class="form-group">
+                        <label for="stock">Stock</label>
+                        <input type="number" class="form-control" id="stock"
+                            name="stock" [(ngModel)]="productDetails.stock"
+                            required min="0">
+                        <!-- <div *ngIf="productForm.controls.stock?.touched && productForm.controls.stock?.invalid" class="text-danger">
+                    Please enter a valid stock quantity.
+                  </div> -->
+                    </div>
+
+                    <button id="submit-btn" type="submit"
+                        [disabled]="!productForm.valid"
+                        class="btn btn-primary d-none">Submit</button>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Close</button>
+                <label for="submit-btn" type="button" data-bs-dismiss="modal"
+                    class="btn btn-primary">Submit</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1"
+    aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="editModalLabel">Edit Product
+                    Listing </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <form #productEditForm="ngForm"
+                    (ngSubmit)="submitEditForm(productForm)">
+
+                    <div class="form-group">
+                        <label for="productid">Product ID</label>
+                        <input type="text" class="form-control"
+                            id="editproductid" name="productid"
+                            [(ngModel)]="productDetails.productid" required>
+                        <!-- <div *ngIf="productForm.controls.productid?.touched && productForm.controls.productid?.invalid" class="text-danger">
+                    Product ID is required.
+                  </div> -->
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="editname"
+                            name="name" [(ngModel)]="productDetails.name"
+                            required>
+                        <!-- <div *ngIf="productForm.controls.name?.touched && productForm.controls.name?.invalid" class="text-danger">
+                    Name is required.
+                  </div> -->
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" id="editdescription"
+                            name="description"
+                            [(ngModel)]="productDetails.description"
+                            required></textarea>
+                        <!-- <div *ngIf="productForm.controls.description?.touched && productForm.controls.description?.invalid" class="text-danger">
+                    Description is required.
+                  </div> -->
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <input type="text" class="form-control"
+                            id="editcategory" name="category"
+                            [(ngModel)]="productDetails.category" required>
+                        <!-- <div *ngIf="productForm.controls.category?.touched && productForm.controls.category?.invalid" class="text-danger">
+                    Category is required.
+                  </div> -->
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="number" class="form-control" id="editprice"
+                            name="price" [(ngModel)]="productDetails.price"
+                            required min="0">
+                        <!-- <div *ngIf="productForm.controls.price?.touched && productForm.controls.price?.invalid" class="text-danger">
+                    Please enter a valid price.
+                  </div> -->
+                    </div>
+
+                    <div class="form-group">
+                        <label for="stock">Stock</label>
+                        <input type="number" class="form-control" id="editstock"
+                            name="stock" [(ngModel)]="productDetails.stock"
+                            required min="0">
+                        <!-- <div *ngIf="productForm.controls.stock?.touched && productForm.controls.stock?.invalid" class="text-danger">
+                    Please enter a valid stock quantity.
+                  </div> -->
+                    </div>
+
+                    <button id="editsubmit-btn" type="submit"
+                        [disabled]="!productEditForm.valid"
+                        class="btn btn-primary d-none">Submit</button>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Close</button>
+                <label for="editsubmit-btn" type="button"
+                    data-bs-dismiss="modal"
+                    class="btn btn-primary">Submit</label>
+            </div>
+        </div>
+    </div>
+</div>

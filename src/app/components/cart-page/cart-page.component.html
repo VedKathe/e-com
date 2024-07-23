@@ -1,0 +1,40 @@
+<div class=" p-5 pt-3">
+    <div class="d-flex justify-content-between p-2 ">
+        <div class="h3">Cart</div>
+        
+    </div>
+    <div class="rounded p-2 m-2 shadow-lg">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Product ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let item of carts'>
+                    <th scope="row">{{item.product.productid}}</th>
+                    <td>{{item.product.name}}</td>
+
+                    <td>Rs. {{item.product.price}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>
+                        <div class>
+                            <button class="btn btn-secondary" title="edit"
+                                data-bs-toggle="modal"
+                                data-bs-target="#editModal">-</button>
+                            <button class="btn btn-danger"
+                                title="delete">+</button>
+
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
