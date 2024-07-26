@@ -1,1 +1,51 @@
-<p>admin-order-page works!</p>
+<div class=" p-5 pt-3">
+    <div class="d-flex justify-content-between p-2 ">
+        <div class="h3">Orders</div>  
+    </div>
+    <div class="rounded p-2 m-2 shadow-lg">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Username</th>
+                    <th scope="col">Items</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Date</th>
+
+                    <th scope="col">Action</th>
+                    
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let order of orders'>
+                    <th scope="row">{{order.user.username}}</th>
+                    <td>
+                        <div *ngFor='let item of order.orderItems'>
+                            {{item.product.name}} x {{item.quantity}}
+                        </div>
+                    </td>
+                    
+                    
+                    <td>{{order.status}}</td>
+
+                    <td>{{order.createdAt | date:'medium'}}</td>
+                    
+                    <td>
+
+                        <div class="d-flex flex-row gap-2">
+                            <select class="form-select" aria-label="Default select example"  (change)="setStatus($event,order)">
+                                <option  disabled selected>Change Order Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="ordered">Order Placed</option>
+                                <option value="shipped">Shipped</option>
+                            </select>
+                            <button class="btn btn-danger" (click)="deleteOrder(order)"
+                                title="delete">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

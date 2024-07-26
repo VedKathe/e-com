@@ -7,12 +7,13 @@ import { AuthService } from './services/auth.service';
 import { ProductService } from './services/product/product.service';
 import { LocalService } from './services/local/local.service';
 import { CartService } from './services/cart/cart.service';
+import { OrderService } from './services/order/order.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule, RouterOutlet,NavBarComponent,HttpClientModule],
-  providers:[AuthService,ProductService,LocalService,CartService],
+  providers:[AuthService,ProductService,LocalService,CartService,OrderService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

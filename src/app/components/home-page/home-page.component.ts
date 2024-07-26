@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductService } from '../../services/product/product.service';
+import { CartService } from '../../services/cart/cart.service';
+import { LocalService } from '../../services/local/local.service';
+import { ToastrService } from 'ngx-toastr';
 interface Products{
   id:string;
   productid:string;
@@ -21,10 +24,21 @@ export class HomePageComponent {
 
   public products:Products[]=[]
 
-  constructor(private productService:ProductService){
+  constructor(private productService:ProductService,private cartService:CartService,private localStore:LocalService, private toastr: ToastrService){
     this.productService.getAllProducts().subscribe((res)=>{
       this.products=res
       console.log(res);
+    })
+  }
+
+  addItemToCart(cartItem:any){
+
+    console.log(cartItem);
+
+    const payload = {productId:cartItem.id,quantity:1}
+
+    this.cartService.addToCart(this.localStore.getUserId(),payload).subscribe((res)=>{
+      this.toastr.success("Item Added to Cart");
     })
   }
 

@@ -7,13 +7,18 @@ import { adminGuard } from './guard/admin.guard';
 import { AdminProductPageComponent } from './components/admin-product-page/admin-product-page.component';
 import { AdminOrderPageComponent } from './components/admin-order-page/admin-order-page.component';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
+import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 
 export const routes: Routes = [
+   
     {
         path:"home" , component: HomePageComponent 
     },
     {
         path:"login" , component: LoginPageComponent
+    },
+    {
+        path:"registration" , component: RegistrationPageComponent
     },
     {
         path:"cart" , component: CartPageComponent
