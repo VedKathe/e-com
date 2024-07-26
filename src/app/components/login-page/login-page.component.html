@@ -20,11 +20,7 @@
         <input type="password" formControlName="password" class="form-control"
           id="floatingPassword" placeholder="Password">
         <label for="floatingPassword">Password</label>
-        <!-- <div *ngIf="myForm.get('password')?.invalid && myForm.get('password')?.touched" class="text-danger">
-          <div *ngIf="myForm.get('password')?.errors?.['required']">Password is required</div>
-          <div *ngIf="myForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long</div>
-          <div *ngIf="myForm.get('password')?.errors?.['whitespace']">Password cannot start with whitespace</div>
-        </div> -->
+       
         <div class="  text-danger text-sm" *ngIf="myForm.get('password')?.dirty">
           <div class="block" *ngIf="!myForm.get('password')?.value?.match('^(?=.*[A-Z])')">At least one  uppercase
                                   letter.</div>
@@ -52,7 +48,7 @@
       </div>
       
       <button [disabled]="myForm.invalid" class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+      <p class="mt-5 mb-3 text-muted">&copy; 2023–2024</p>
     </form>
     
   </main>

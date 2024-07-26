@@ -8,6 +8,7 @@ import { AdminProductPageComponent } from './components/admin-product-page/admin
 import { AdminOrderPageComponent } from './components/admin-order-page/admin-order-page.component';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
+import { ProductPageComponent } from './components/product-page/product-page.component';
 
 export const routes: Routes = [
    
@@ -19,6 +20,9 @@ export const routes: Routes = [
     },
     {
         path:"registration" , component: RegistrationPageComponent
+    },
+    {
+        path:"product" , component: ProductPageComponent
     },
     {
         path:"cart" , component: CartPageComponent
