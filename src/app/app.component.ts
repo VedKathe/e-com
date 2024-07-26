@@ -19,4 +19,34 @@ import { OrderService } from './services/order/order.service';
 })
 export class AppComponent {
   title = 'client';
+
+  loginStatus:string='logout'
+
+  noOfCartItems:number=0
+
+
+
+  constructor(private cartService:CartService,private localStore:LocalService){
+    if(localStore.checkUser()){
+    this.cartService.getCartItems(this.localStore.getUserId()).subscribe((res)=>{
+        this.noOfCartItems = res.length
+        console.log(res.length);
+    })
+  }
+  }
+
+  changeStatus(){
+    this.loginStatus = this.loginStatus==='logout'? 'login': 'logout';
+    console.log('Toggled');
+  }
+
+  subtoEmit(comRef:any)
+  {
+    comRef.runCartEmitter.subscribe((res:any)=>{
+      this.cartService.getCartItems(this.localStore.getUserId()).subscribe((res)=>{
+        this.noOfCartItems = res.length
+        console.log(res.length);
+    })
+    })
+  }
 }

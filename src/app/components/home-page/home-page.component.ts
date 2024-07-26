@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductService } from '../../services/product/product.service';
 import { CartService } from '../../services/cart/cart.service';
@@ -22,6 +22,8 @@ interface Products{
 })
 export class HomePageComponent {
 
+  @Output() runCartEmitter = new EventEmitter();
+
   public products:Products[]=[]
 
   constructor(private productService:ProductService,private cartService:CartService,private localStore:LocalService, private toastr: ToastrService){
@@ -39,7 +41,9 @@ export class HomePageComponent {
 
     this.cartService.addToCart(this.localStore.getUserId(),payload).subscribe((res)=>{
       this.toastr.success("Item Added to Cart");
+      this.runCartEmitter.emit()
     })
+
   }
 
 }

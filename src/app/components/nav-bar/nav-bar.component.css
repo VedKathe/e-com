@@ -1,0 +1,17 @@
+.numcart{
+    width: 1rem;
+    padding: 1px;
+    border-radius: 50%;
+    background-color: brown;
+    top: 0;
+    right: -5px;
+    margin-top: 0px;
+    text-align: center;
+    z-index: 0;
+    font-size:x-small;
+}
+
+.cart{
+    z-index: 10;
+}
+

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CartService } from '../../services/cart/cart.service';
 import { LocalService } from '../../services/local/local.service';
 import { CommonModule } from '@angular/common';
@@ -14,6 +14,7 @@ import { OrderService } from '../../services/order/order.service';
 export class CartPageComponent {
   carts: any[] = [];
   subTotel: number = 0;
+  @Output() runCartEmitter = new EventEmitter();
 
   constructor(private cartService: CartService, private localStore: LocalService, private toastr: ToastrService, private orderService: OrderService){
     this.cartService.getCartItems(this.localStore.getUserId()).subscribe((res) => {
@@ -46,6 +47,7 @@ export class CartPageComponent {
       const payload = { productId: cartItem.product.id }
       this.cartService.removeFromCart(this.localStore.getUserId(), payload).subscribe((res) => {
         console.log(res);
+        this.runCartEmitter.emit()
         this.toastr.success("Item Removed");
       })
       this.carts = this.carts.filter((val) => val.product.id != cartItem.product.id)
@@ -74,6 +76,7 @@ export class CartPageComponent {
     this.orderService.placeOrder(this.localStore.getUserId()).subscribe((res)=>{
       console.log(res);
       this.carts = []
+      this.calSubtotel()
     })
 
   }

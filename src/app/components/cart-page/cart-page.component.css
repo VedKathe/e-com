@@ -1,0 +1,13 @@
+.carttotel{
+    display: flex;
+    flex-direction: row;
+
+}
+
+@media (max-width: 576px) { 
+    .carttotel{
+        
+        flex-direction: column;
+    
+    }
+}

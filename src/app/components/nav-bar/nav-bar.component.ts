@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,Input} from '@angular/core';
 import { LocalService } from '../../services/local/local.service';
 import { AuthService } from '../../services/auth.service';
 import { NgIf,NgTemplateOutlet } from '@angular/common';
@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
   styleUrl: './nav-bar.component.css'
 })
 export class NavBarComponent {
+
+  @Input() noOfCartItems:number = 0;
+
   constructor(public localStore: LocalService, public authService:AuthService, public router:Router){
       console.log(authService.isLoggedIn());
   }

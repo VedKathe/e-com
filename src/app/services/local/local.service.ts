@@ -38,4 +38,24 @@ export class LocalService {
     const user = JSON.parse(localStorage.getItem("user")!)
     return user.id
   }
+
+  public checkUser() {
+    const user = JSON.parse(localStorage.getItem("user")!)
+    if (user) {
+      if (user.role == 'u') {
+        return true
+      }
+    }
+    return false
+  }
+
+  public checkAdmin() {
+    const user = JSON.parse(localStorage.getItem("user")!)
+    if (user) {
+      if (user.role == 'a') {
+        return true
+      }
+    }
+    return false
+  }
 }

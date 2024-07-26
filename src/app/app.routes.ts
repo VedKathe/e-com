@@ -12,7 +12,7 @@ import { RegistrationPageComponent } from './components/registration-page/regist
 export const routes: Routes = [
    
     {
-        path:"home" , component: HomePageComponent 
+        path:"" , component: HomePageComponent 
     },
     {
         path:"login" , component: LoginPageComponent
