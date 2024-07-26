@@ -20,17 +20,17 @@ export class ProductService {
 
   public getAllProducts()
   {
-    const url = "http://hollow-felita-weoto-170346d6.koyeb.app/products"
+    const url = "https://hollow-felita-weoto-170346d6.koyeb.app/products"
     return this.http.get<Products[]>(url)
   }
 
   public addProduct(product:Products){
-    const url = "http://hollow-felita-weoto-170346d6.koyeb.app/products"
+    const url = "https://hollow-felita-weoto-170346d6.koyeb.app/products"
     return this.http.post<Products[]>(url,product)
   }
 
   public updateProduct(id:string, product:Products){
-    const url = "http://hollow-felita-weoto-170346d6.koyeb.app/products/"+id
+    const url = "https://hollow-felita-weoto-170346d6.koyeb.app/products/"+id
     return this.http.patch<Products[]>(url,product)
   }
 
