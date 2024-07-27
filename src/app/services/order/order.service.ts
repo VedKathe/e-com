@@ -9,22 +9,22 @@ export class OrderService {
   constructor(private http: HttpClient) { }
 
   public placeOrder(userId:string){
-    const url = "https://hollow-felita-weoto-170346d6.koyeb.app/orders/place/"+userId
+    const url = "https://e-comm-api/orders/place/"+userId
     return this.http.get<any>(url)
   }
 
   public getAllOrder(){
-    const url = "https://hollow-felita-weoto-170346d6.koyeb.app/orders"
+    const url = "https://e-comm-api/orders"
     return this.http.get<any>(url)
   }
 
   public updateStatus(id:string,order:any){
-    const url = "https://hollow-felita-weoto-170346d6.koyeb.app/orders/"+id+"/status"
+    const url = "https://e-comm-api/orders/"+id+"/status"
     return this.http.patch<any>(url,order)
   }
 
   public deleteOrderByID(itemId:any){
-    const url = "https://hollow-felita-weoto-170346d6.koyeb.app/orders/"+itemId
+    const url = "https://e-comm-api/orders/"+itemId
     return this.http.delete<any>(url)
   }
 }

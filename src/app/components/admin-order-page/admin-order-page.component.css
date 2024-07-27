@@ -1,0 +1,26 @@
+.canceled{
+    background-color: rgb(253, 228, 228);
+    color: rgb(218, 46, 72);
+    border-radius: 4rem;
+    text-align: center;
+    text-transform: capitalize;
+    width: 80%;
+}
+
+.shipped{
+    background-color: rgb(224, 248, 224);
+    color: rgb(64, 145, 84);
+    border-radius: 4rem;
+    text-align: center;
+    text-transform: capitalize;
+    width: 80%;
+}
+
+.pending{
+    background-color: rgb(255, 240, 225);
+    color: rgb(218, 166, 107);
+    border-radius: 4rem;
+    text-align: center;
+    text-transform: capitalize;
+    width: 80%;
+}

@@ -2,8 +2,8 @@
     <div class="d-flex justify-content-between p-2 ">
         <div class="h3">Orders</div>  
     </div>
-    <div class="rounded p-2 m-2 shadow-lg">
-        <table class="table table-hover">
+    <div class="rounded p-2 m-2 shadow-lg bg-white">
+        <table class="table table-hover  align-middle">
             <thead>
                 <tr>
                     <th scope="col">Username</th>
@@ -26,7 +26,11 @@
                     </td>
                     
                     
-                    <td>{{order.status}}</td>
+                    <td >
+                        <div class={{order.status}}>
+                        {{order.status}}
+                    </div>
+                    </td>
 
                     <td>{{order.createdAt | date:'medium'}}</td>
                     
@@ -35,9 +39,10 @@
                         <div class="d-flex flex-row gap-2">
                             <select class="form-select" aria-label="Default select example"  (change)="setStatus($event,order)">
                                 <option  disabled selected>Change Order Status</option>
-                                <option value="pending">Pending</option>
-                                <option value="ordered">Order Placed</option>
                                 <option value="shipped">Shipped</option>
+                                <option value="pending">Pending</option>
+                                <option value="canceled">Cancel</option>
+                                
                             </select>
                             <button class="btn btn-danger" (click)="deleteOrder(order)"
                                 title="delete">Delete</button>

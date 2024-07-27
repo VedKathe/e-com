@@ -5,8 +5,16 @@
 html,
 body {
   height: 100%;
+  
 }
 
+body{
+  background-color: rgb(232, 240, 251);
+}
+
+th {
+  text-align: center;
+}
 .error{
   color: #ff0000;
 }
@@ -22,3 +30,6 @@ body {
 .ng-invalid:not(form)  {
   border-left: 5px solid #a94442; /* red */
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
