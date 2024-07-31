@@ -20,17 +20,17 @@ export class ProductService {
 
   public getAllProducts()
   {
-    const url = "https://e-comm-api/products"
+    const url = "https://little-sheeree-weoto-d06c8951.koyeb.app/products"
     return this.http.get<Products[]>(url)
   }
 
   public addProduct(product:Products){
-    const url = "https://e-comm-api/products"
+    const url = "https://little-sheeree-weoto-d06c8951.koyeb.app/products"
     return this.http.post<Products[]>(url,product)
   }
 
   public updateProduct(id:string, product:Products){
-    const url = "https://e-comm-api/products/"+id
+    const url = "https://little-sheeree-weoto-d06c8951.koyeb.app/products/"+id
     return this.http.patch<Products[]>(url,product)
   }
 

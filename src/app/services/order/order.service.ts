@@ -9,22 +9,22 @@ export class OrderService {
   constructor(private http: HttpClient) { }
 
   public placeOrder(userId:string){
-    const url = "https://e-comm-api/orders/place/"+userId
+    const url = "https://little-sheeree-weoto-d06c8951.koyeb.app/orders/place/"+userId
     return this.http.get<any>(url)
   }
 
   public getAllOrder(){
-    const url = "https://e-comm-api/orders"
+    const url = "https://little-sheeree-weoto-d06c8951.koyeb.app/orders"
     return this.http.get<any>(url)
   }
 
   public updateStatus(id:string,order:any){
-    const url = "https://e-comm-api/orders/"+id+"/status"
+    const url = "https://little-sheeree-weoto-d06c8951.koyeb.app/orders/"+id+"/status"
     return this.http.patch<any>(url,order)
   }
 
   public deleteOrderByID(itemId:any){
-    const url = "https://e-comm-api/orders/"+itemId
+    const url = "https://little-sheeree-weoto-d06c8951.koyeb.app/orders/"+itemId
     return this.http.delete<any>(url)
   }
 }
