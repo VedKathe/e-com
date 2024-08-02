@@ -1,4 +1,4 @@
-<div class="d-flex align-items-center h-100">
+<div *ngIf="!verify" class="d-flex align-items-center h-100">
     <main class="form-signin text-center align-items-center">
         <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
             <!-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
@@ -80,4 +80,9 @@
             <p class="mt-5 mb-3 text-muted">&copy; 2023–2024</p>
         </form>
     </main>
+</div>
+
+<div *ngIf="verify" class="d-flex flex-column justify-content-center align-items-center h-75 ">
+    <div class="h1 fs-1">Email Verification Required</div>
+    <div class="fs-4"> Check your email for Verification link </div>
 </div>

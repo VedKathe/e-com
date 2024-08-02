@@ -1,0 +1,8 @@
+
+<div class="d-flex flex-column justify-content-center align-items-center h-75 ">
+    <div  *ngIf="!verified" class="loader"></div>
+    <div  *ngIf="!verified" class="h1 fs-1 m-3" > Verifying</div>
+
+    <div *ngIf="verified" class="h1 fs-1">Email Verified </div>
+    <div  *ngIf="verified" class="fs-5"> Go to login page <a href="/login"> click here</a> </div>
+</div>

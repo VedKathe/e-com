@@ -9,6 +9,7 @@ import { AdminOrderPageComponent } from './components/admin-order-page/admin-ord
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
+import { VerifyComponent } from './components/verify/verify.component';
 
 export const routes: Routes = [
    
@@ -35,5 +36,8 @@ export const routes: Routes = [
     },
     {
         path:'admin/order', component:AdminOrderPageComponent,canActivate:[authGuard,adminGuard]
+    },
+    {
+        path:'verify', component:VerifyComponent
     }
 ];

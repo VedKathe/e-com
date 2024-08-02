@@ -67,7 +67,11 @@ export class LoginPageComponent {
         if (error.status === 401) {
           // Optionally, you can show an alert or a message to the user
           this.torstr.error('Unauthorized: Incorrect email or password');
-        } else {
+        }else if (error.status === 403) {
+          // Optionally, you can show an alert or a message to the user
+          this.torstr.error('Email Not Verified');
+        } 
+        else {
           // Handle other errors
           console.error('An error occurred:', error);
         }

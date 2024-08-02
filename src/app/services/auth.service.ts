@@ -60,4 +60,13 @@ export class AuthService {
     localStorage.removeItem("token")
     localStorage.removeItem("user")
   }
+
+  verifyEmail(token:string){
+    const url = 'https://little-sheeree-weoto-d06c8951.koyeb.app/auth/verify';
+    console.log("verify req send :"+token);
+    const payload = {
+      token: token
+    }
+    return this.http.post(url,payload);
+  }
 }
