@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { environment } from '../../../environments/environment';
 interface Products{
   id:string;
   productid:string;
@@ -20,17 +20,17 @@ export class ProductService {
 
   public getAllProducts()
   {
-    const url = "https://little-sheeree-weoto-d06c8951.koyeb.app/products"
+    const url = environment.apiUrl + "/products"
     return this.http.get<Products[]>(url)
   }
 
   public addProduct(product:Products){
-    const url = "https://little-sheeree-weoto-d06c8951.koyeb.app/products"
+    const url = environment.apiUrl + "/products"
     return this.http.post<Products[]>(url,product)
   }
 
   public updateProduct(id:string, product:Products){
-    const url = "https://little-sheeree-weoto-d06c8951.koyeb.app/products/"+id
+    const url = environment.apiUrl + "/products/"+id
     return this.http.patch<Products[]>(url,product)
   }
 
